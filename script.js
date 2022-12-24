@@ -1,45 +1,29 @@
 "use strict";
 
-// console.log(document.querySelector(".message").textContent);
-// document.querySelector(".message").textContent = "Correct Number 😎";
-// console.log(document.querySelector(".message").textContent);
+/*
+console.log(document.querySelector(".message").textContent);
+document.querySelector(".message").textContent = "Correct Number 😎";
+console.log(document.querySelector(".message").textContent);
 
-// document.querySelector(".number").textContent = 11;
-// document.querySelector(".score").textContent = 10;
+document.querySelector(".number").textContent = 13;
+document.querySelector(".score").textContent = 10;
 
-// console.log(document.querySelector(".guess").value);
-// document.querySelector(".guess").value = 9;
+console.log(document.querySelector(".guess").value);
+document.querySelector(".guess").value = 23;
+*/
 
 // HANDLING EVENTS
 // CLICK
+// a function is just a value, therefore we can pass it to another function as a value
 
-// function carModel(brand, model, year) {
-//   this.brand = brand;
-//   this.model = model;
-//   this.year = year;
-// }
+//in an application where we retrieve value from the user, the first thing we should do is check if
+//a value was inputted or not
 
-// const matthewsCar = new carModel("Ford", "Ka", 2019);
-// console.log(matthewsCar.brand);
+document.querySelector(".check").addEventListener("click", function () {
+  const guess = Number(document.querySelector(".guess").value);
+  console.log(guess, typeof guess);
 
-// function times2(e) {
-//   let result = [];
-//   result += e;
-//   return e * 2;
-// }
-// console.log(times2([10, 20]));
-
-// 1 - Programa para determinar quanto custa o valor hora do funcionário;
-// 2 - levar em consideração o salário mensal;
-// 3 - levar em consideração horas trabalhadas por mês;
-
-function valorHora(salarioMensal, diasTrabalhados, horasDeTrabalhoPorDia) {
-  let result = 0;
-  const horasNoMes = diasTrabalhados * horasDeTrabalhoPorDia;
-
-  result = salarioMensal / horasNoMes;
-
-  return result;
-}
-
-console.log(valorHora(2000, 15, 6));
+  if (!guess) {
+    document.querySelector(".message").textContent = "No Number inserted! 🧨";
+  }
+});
