@@ -16,8 +16,15 @@ document.querySelector(".guess").value = 23;
 // CLICK
 // a function is just a value, therefore we can pass it to another function as a value
 
-//in an application where we retrieve value from the user, the first thing we should do is check if
-//a value was inputted or not
+// in an application where we retrieve value from the user, the first thing we should do is check if
+// a value was inputted or not
+
+// DEFINING THE SECRET NUMBER - must be done outside of the "CLICK FUNCTION of the event listener"
+// because it should be generated only once, when the application starts. If it is defined inside of
+// the "CLICK FUNCTION" it would generate a new secret number on each click of the button
+
+const secretNumber = Math.trunc(Math.random() * 20) + 1;
+document.querySelector(".number").textContent = secretNumber;
 
 document.querySelector(".check").addEventListener("click", function () {
   const guess = Number(document.querySelector(".guess").value);
@@ -25,5 +32,14 @@ document.querySelector(".check").addEventListener("click", function () {
 
   if (!guess) {
     document.querySelector(".message").textContent = "No Number inserted! 🧨";
+  } else if (guess > secretNumber) {
+    document.querySelector(".message").textContent =
+      "Number is too High! Try again";
+  } else if (guess < secretNumber) {
+    document.querySelector(".message").textContent =
+      "Number is too Low! Try again";
+  } else {
+    document.querySelector(".message").textContent =
+      "Congratulations! The guess is correct!!";
   }
 });
